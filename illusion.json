@@ -1,0 +1,175 @@
+{
+  "title": "ILLUSION",
+  "rules": [
+    {
+      "description": "left_shift+space & right_option to kor/eng in Royal TSX",
+      "manipulators": [
+        {
+          "type": "basic",
+          "from": { "key_code": "spacebar", "modifiers": { "mandatory": [ "left_shift" ] } },
+          "to": [ { "key_code": "right_option" } ],
+          "conditions": [ { "type": "frontmost_application_if", "bundle_identifiers": [ "com.lemonmojo.RoyalTSX.App" ] } ]
+        },
+        {
+          "type": "basic",
+          "from": { "key_code": "right_alt" },
+          "to": [ { "key_code": "right_option" } ],
+          "conditions": [ { "type": "frontmost_application_if", "bundle_identifiers": [ "com.lemonmojo.RoyalTSX.App" ] } ]
+        }
+      ]
+    },
+
+    {
+      "description": "shift+delete to delete_forward",
+      "manipulators": [
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "delete_or_backspace",
+            "modifiers": {
+              "mandatory": [ "shift" ]
+            }
+          },
+          "to": [ { "key_code": "delete_forward" } ]
+        }
+      ]
+    },
+
+    {
+      "description": "right_shift+return to symbol",
+      "manipulators": [
+        {
+          "type": "basic",
+          "conditions": [
+            {
+              "type": "frontmost_application_unless",
+              "bundle_identifiers": [
+                "com.parallels.desktop",
+                "com.parallels.vm",
+                "com.parallels.desktop.console",
+                "com.parallels.winapp."
+              ]
+            }
+          ],
+          "from": {
+            "key_code": "return_or_enter",
+            "modifiers": {
+                "mandatory": [ "right_shift" ]
+            }
+          },
+          "to": [
+            {
+              "key_code": "spacebar",
+              "modifiers": [
+                "left_control",
+                "left_command"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+
+    {
+			"description": "left_arrow & right_arrow to skip -+5sec to iTunes",
+			"manipulators": [
+				{
+					"type": "basic",
+					"conditions": [
+						{
+							"type": "frontmost_application_if",
+							"bundle_identifiers": [
+								"com.apple.iTunes"
+							]
+						}
+					],
+					"from": { "key_code": "left_arrow" },
+					"to": [
+						{
+							"key_code": "left_arrow",
+							"modifiers": [
+								"left_option",
+								"left_command"
+							]
+						}
+					]
+				},
+				{
+					"type": "basic",
+					"conditions": [
+						{
+							"type": "frontmost_application_if",
+							"bundle_identifiers": [
+								"com.apple.iTunes"
+							]
+						}
+					],
+					"from": { "key_code": "right_arrow" },
+					"to": [
+						{
+							"key_code": "right_arrow",
+							"modifiers": [
+								"left_option",
+								"left_command"
+							]
+						}
+					]
+				}
+			]
+		},
+
+		{
+			"description": "caps_lock to show/hide dock",
+			"manipulators": [
+				{
+    			"type": "basic",
+    			"conditions": [
+      			{
+      				"type": "frontmost_application_unless",
+      				"bundle_identifiers": [
+      					"com.parallels.desktop",
+      					"com.parallels.vm",
+								"com.parallels.desktop.console",
+								"com.parallels.winapp."
+							]
+						}
+					],
+    			"from": { "key_code": "caps_lock" },
+					"to": [
+						{
+							"key_code": "d",
+							"modifiers": [
+								"left_option",
+								"left_command"
+							]
+						}
+					]
+				}
+			]
+		},
+
+    {
+      "description": "command+d,w,z, do ctrl in Parallels",
+      "manipulators": [
+        {
+          "type": "basic",
+          "from": { "key_code": "d", "modifiers": { "mandatory": [ "left_command" ] } },
+          "to": [ { "key_code": "d" , "modifiers":  [ "left_control" ] }  ],
+          "conditions": [ { "type": "frontmost_application_if", "bundle_identifiers": [ "com.parallels.winapp" ] } ]
+        },
+        {
+          "type": "basic",
+          "from": { "key_code": "w", "modifiers": { "mandatory": [ "left_command" ] } },
+          "to": [ { "key_code": "w" , "modifiers":  [ "left_control" ] }  ],
+          "conditions": [ { "type": "frontmost_application_if", "bundle_identifiers": [ "com.parallels.winapp" ] } ]
+        },
+        {
+          "type": "basic",
+          "from": { "key_code": "z", "modifiers": { "mandatory": [ "left_command" ] } },
+          "to": [ { "key_code": "z" , "modifiers":  [ "left_control" ] }  ],
+          "conditions": [ { "type": "frontmost_application_if", "bundle_identifiers": [ "com.parallels.winapp" ] } ]
+        }
+      ]
+    }
+  ]
+}
